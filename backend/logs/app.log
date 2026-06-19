@@ -1509,3 +1509,10 @@ WHERE orders.id = ?
 2026-06-19 16:43:10 | INFO     | seed                      | Created order: PO-20251202-00046 (4 items)
 2026-06-19 16:43:10 | INFO     | seed                      | === Seed complete ===
 2026-06-19 16:43:25 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 16:45:01 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 16:45:07 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 16:45:10 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 16:45:15 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2111', 'to_postcode': '3141', 'weight': 1.0, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 16:45:15 | INFO     | auspost_service           | Requesting shipping quote: 2111 -> 3141, 1.00kg
+2026-06-19 16:45:18 | INFO     | auspost_service           | Got 5 shipping quotes
+2026-06-19 16:45:21 | INFO     | router.orders             | list_orders page=1 total=2

@@ -55,16 +55,20 @@ Built a **full-stack web application** that consolidates all operations into a s
 
 ### 2.2 Price Calculation System / 价格计算体系
 
-**Key insight** — RRP prices are in USD and **already include GST** (10% Australian Goods and Services Tax). GST must be back-calculated, not added.
+**Key insight** — RRP prices are in USD and already include GST. The assessment specification defines the calculation formula explicitly:
 
-**关键发现** — RRP 价格为美元且**已包含 GST**（10% 澳大利亚商品服务税）。需要反算 GST，而非正向加算。
+**关键发现** — RRP 价格为美元且已含 GST。考题明确定义了计算公式：
 
 ```
 line_total = unit_price (RRP) × quantity
 subtotal   = Σ line_totals
-gst        = subtotal × 10 / 110      ← back-calculated / 反算
-total      = subtotal + shipping_fee
+gst        = subtotal × 10%            ← per assessment: "GST = 10% of Subtotal"
+total      = subtotal + gst + shipping_fee
 ```
+
+> **Design decision note / 设计决策说明**: The initial implementation used GST back-calculation (`subtotal × 10/110`), which is more accurate from an Australian tax perspective (since RRP already includes GST). However, this was revised to match the assessment's literal formula (`GST = 10% of Subtotal`, `Total = Subtotal + GST + Shipment Fee`) to ensure the output exactly matches the expected results. This trade-off prioritizes assessment compliance over tax-accounting precision.
+>
+> 初始实现使用了 GST 反算（`subtotal × 10/110`），从澳大利亚税制角度更准确。但为了确保输出与考题预期完全一致，已修正为考题字面公式。这一取舍优先考虑了考题合规性。
 
 All calculations use Python `Decimal` type for financial precision, avoiding floating-point rounding issues.
 
@@ -104,9 +108,48 @@ Designed for international/Western aesthetic preferences:
 ### 2.5 Database Design / 数据库设计
 
 ```
-products ────── orders ─┬── order_items
+products ────── orders ─┬── order_items  (assigned_tracking, image_url)
                         │
-                        └── tracking ──── tracking_events
+                        └── tracking  (tracking_label) ──── tracking_events
+```
+
+**Product model extended to match real API data / Product 模型扩展以匹配真实 API 数据**:
+
+The Google Apps Script SQL query returns product data with unit-suffixed values (e.g. `"10.0mm"`, `"0.2kg"`, `"1000.0mm³"`). The Product model was expanded to store all these fields:
+
+Google Apps Script SQL 查询返回的产品数据带有单位后缀。Product 模型已扩展以存储所有字段：
+
+| New Field / 新字段 | Source Example / 数据源示例 | Purpose / 用途 |
+|---|---|---|
+| `length/width/height` | `"10.0mm"` → `10.0` | Package dimensions for shipping fee calculation / 包裹尺寸用于运费计算 |
+| `volume` | `"1000.0mm³"` → `1000.0` | Volumetric weight fallback / 体积重量计算 |
+| `volumetric_gross_weight` | `"0.2kg"` → `0.2` | Shipping weight in kg / 运输重量 |
+| `barcode` | `"998855"` | Product identification / 产品条码 |
+| `dosage_type` | `"Pastille"` | Product classification / 产品剂型 |
+| `image_url` | placeholder URL | SKU image display in order detail / 订单详情中 SKU 图片展示 |
+
+**Order model extended / 订单模型扩展**:
+
+| New Field / 新字段 | Assessment Requirement / 考题要求 |
+|---|---|
+| `company_name` | "V22 Dispensary" / "Cann Life Dispensary" — listed as a separate field in the assessment |
+| `customer_phone` | "0481 735 488" / "0411 547 288" — explicitly shown in the order header |
+| `OrderItem.assigned_tracking` | Links each SKU line to its Track label (e.g. "Track 1") — assessment defines SKU ↔ Track mapping |
+| `OrderItem.image_url` | Snapshot of product image at order time / 订单时产品图片快照 |
+| `Tracking.tracking_label` | "Track 1", "Track 2", "Track 3" — assessment uses these labels |
+
+**Data parsing fault tolerance / 数据解析容错**:
+
+A `utils.py` module provides `parse_numeric()` which strips unit suffixes and handles null/empty/malformed values gracefully:
+
+`utils.py` 模块提供 `parse_numeric()` 函数，可剥离单位后缀并优雅处理空值/异常格式：
+
+```python
+parse_numeric("10.0mm")      → 10.0
+parse_numeric("0.2kg")       → 0.2
+parse_numeric("1000.0mm³")   → 1000.0
+parse_numeric("nullDays")    → 0.0  (default)
+parse_numeric(None)           → 0.0  (default)
 ```
 
 | Design Choice / 设计决策 | Rationale / 理由 |
@@ -240,6 +283,56 @@ Based on industry research ([Shopify B2B Architecture](https://www.shopify.com/e
 5. **Interview positioning** — "The system is built as a B-side internal tool (matching assessment requirements), but the Logistics module's timeline UI references AusPost's consumer-facing tracking experience. Extending it to a C-side portal would only require adding permission isolation and a tracking number query entry point."
    / **面试定位** — "系统以 B 端内部工具为核心（符合考题），Logistics 的时间线 UI 参考了 AusPost C 端体验，扩展为 C 端门户只需增加权限隔离和追踪号入口。"
 
+### 2.8 Assessment Data Alignment / 考题数据对齐
+
+After a thorough gap analysis comparing the assessment specification against the implementation, the following corrections were made to ensure exact data fidelity:
+
+在对考题规格与实现进行全面差距分析后，做了以下修正以确保数据完全一致：
+
+**Seed data corrected to match assessment / 种子数据修正为考题原始数据**:
+
+| Field / 字段 | Before (generic) / 之前（通用） | After (assessment-exact) / 之后（考题精确） |
+|---|---|---|
+| Order 1 Address | 45 Oxford St, Sydney NSW 2000 | 125 Toorak Road, South Yarra VIC 3141 |
+| Order 2 Address | 120 Collins St, Melbourne VIC 3000 | 381 Smith Street, Fitzroy VIC 3065 |
+| Order 1 Email | jason@v22dispensary.com | Jason@aerishealth.au |
+| Order 2 Email | bella@cannlife.com | Bella@aerishealth.au |
+| Track 1 Number | ABC123456789 | 2FWZ50008569 |
+| Track 2 Number | DEF987654321 | 2FWZ50008645 |
+| Track 3 Number | GHI111222333 | 305506914 |
+| Shipping origin | 2000 (Sydney) | 2111 (Ryde, NSW) |
+| Company Name | *(missing)* | V22 Dispensary / Cann Life Dispensary |
+| Phone | *(missing)* | 0481 735 488 / 0411 547 288 |
+
+**SKU ↔ Track mapping added / SKU 与 Track 对应关系**:
+
+```
+Order 1 (PO-20251130-00072):
+  Track 1 (2FWZ50008569, StarTrack) ← TBAMET10×3, TBAMET28×1, TBOPAL28×1, HARNIG×4, LELCBD100×6
+
+Order 2 (PO-20251202-00046):
+  Track 2 (2FWZ50008645, StarTrack) ← AURPUR10×10
+  Track 3 (305506914, TNT)          ← HALGEO15×1, MCMW10×2, MCBO30×3
+```
+
+**Frontend layout aligned to assessment sample / 前端布局对齐考题样例**:
+
+The OrderDetailPage was redesigned from a single-column vertical stack to a **two-column layout** matching the assessment's sample screenshot:
+
+OrderDetailPage 从单列纵向堆叠重新设计为**左右两列布局**，匹配考题样例截图：
+
+- **Left column (3/5)**: Order header (company, customer, phone, email, address, date), SKU line items with product images and Track labels, financial summary (Subtotal + GST 10% + Shipment Fee = Total)
+- **Right column (2/5)**: Logistics tracking timeline for each tracking record, with carrier info, tracking label, status badge, estimated delivery, current location, and event history
+
+- **左列 (3/5)**：订单头部（公司、客户、电话、邮箱、地址、日期）、带产品图片和 Track 标签的 SKU 行项、财务汇总
+- **右列 (2/5)**：每个追踪记录的物流时间线，含承运商、追踪标签、状态、预计送达、当前位置和事件历史
+
+**SKU image display with fault tolerance / SKU 图片展示（含容错）**:
+
+Each SKU line item now displays a product image. A `ProductImage` component handles loading failures gracefully — if the image URL fails to load, it falls back to a placeholder icon instead of showing a broken image.
+
+每个 SKU 行项现在显示产品图片。`ProductImage` 组件优雅处理加载失败——图片 URL 加载失败时回退为占位图标。
+
 ---
 
 ## 3. Challenges & Solutions / 问题与解决
@@ -263,6 +356,20 @@ Based on industry research ([Shopify B2B Architecture](https://www.shopify.com/e
 | TNT API 500/401 errors | Test environment credentials unstable | Degraded to web tracking links / 降级为网页追踪链接 |
 | Google Apps Script not a REST API | It's a browser-side UI | Manual query + JSON seed import / 手动查询 + JSON 导入 |
 
+### Assessment Compliance Issues / 考题合规问题
+
+| Problem / 问题 | Root Cause / 原因 | Solution / 解决 |
+|---|---|---|
+| GST formula mismatch / GST 公式不匹配 | Used `subtotal×10/110` (back-calc) instead of `subtotal×10%` (assessment spec) | Changed to `subtotal × 0.10` and `total = subtotal + gst + shipping_fee` / 改为考题公式 |
+| Missing order fields / 订单字段缺失 | Model lacked `company_name`, `customer_phone` | Added to Order model, schemas, and frontend / 增加到模型、schema 和前端 |
+| No SKU images / 无 SKU 图片 | Product model lacked `image_url` | Added field + placeholder URLs + fault-tolerant `ProductImage` component / 增加字段 + 容错图片组件 |
+| No SKU-Track association / 无 SKU-Track 关联 | OrderItem lacked `assigned_tracking` | Added field + Track label display in UI / 增加字段 + UI 展示 |
+| Tracking numbers incorrect / 追踪号不一致 | Seed used generic numbers (ABC123...) | Replaced with assessment's exact numbers (2FWZ50008569, etc.) / 改为考题精确追踪号 |
+| Wrong addresses/postcodes / 地址邮编错误 | Seed used generic Sydney addresses | Corrected to Toorak Road VIC 3141 / Smith Street VIC 3065 / 修正为考题地址 |
+| Single-column layout / 单列布局 | OrderDetailPage used vertical stack | Redesigned to two-column (3:2) matching sample screenshot / 重新设计为左右两列 |
+| Default postcode not 2111 / 默认邮编非 2111 | ShippingPage defaulted to 2000 (Sydney) | Changed to 2111 (Ryde, NSW) per assessment / 改为 2111 |
+| API data unit suffixes / API 数据单位后缀 | Google Script returns `"10.0mm"`, `"0.2kg"` | Created `utils.py` with `parse_numeric()` for fault-tolerant parsing / 创建容错解析工具 |
+
 ---
 
 ## 4. Testing Strategy / 测试策略
@@ -276,7 +383,7 @@ Based on industry research ([Shopify B2B Architecture](https://www.shopify.com/e
 | `test_price_service.py` | Decimal-precision financial calculation unit tests / 金融计算精度单元测试 |
 | `test_tracking.py` | Tracking endpoints / 追踪端点 |
 
-**26 test cases** using in-memory SQLite for isolation / **26 个测试用例**，使用内存数据库隔离
+**28 test cases** using in-memory SQLite for isolation (including order report and shipping fee tests) / **28 个测试用例**，使用内存数据库隔离（含订单报告和运费测试）
 
 ### Frontend Tests (Vitest) / 前端测试
 
@@ -311,14 +418,16 @@ Dual-channel logging output / 双通道日志输出：
 
 - **Full-stack architecture** — React SPA + FastAPI backend, fully decoupled via RESTful API
   / **全栈架构** — React SPA + FastAPI 后端，通过 RESTful API 完全解耦
-- **Financial precision** — Decimal arithmetic ensures accurate GST back-calculation
-  / **金融精度** — Decimal 运算确保 GST 反算准确
+- **Financial precision** — Decimal arithmetic ensures accurate GST calculation per assessment formula (`GST = Subtotal × 10%`, `Total = Subtotal + GST + Shipment Fee`)
+  / **金融精度** — Decimal 运算确保 GST 计算准确，严格遵循考题公式
+- **Assessment data fidelity** — Seed data exactly matches all assessment-specified values (addresses, tracking numbers, emails, phones, company names, postcodes)
+  / **考题数据一致性** — 种子数据精确匹配考题所有指定值（地址、追踪号、邮箱、电话、公司名、邮编）
 - **API integration** — Successfully authenticated and integrated AusPost shipping & tracking APIs
   / **API 集成** — 成功认证并集成 AusPost 运费和追踪 API
 - **Graceful degradation** — TNT API failures handled with automatic fallback
   / **优雅降级** — TNT API 故障自动回退处理
-- **Test coverage** — 34 automated tests across backend and frontend
-  / **测试覆盖** — 前后端共 34 个自动化测试
+- **Test coverage** — 36 automated tests across backend (28) and frontend (8)
+  / **测试覆盖** — 前后端共 36 个自动化测试（后端 28 + 前端 8）
 - **Security-first** — No credentials in source code, parameterized queries, CORS, input validation
   / **安全优先** — 源码无凭证、参数化查询、CORS、输入校验
 - **B/C-side architectural awareness** — Proactively identified module positioning (B-side internal ops vs C-side consumer portal) with industry-backed analysis and clear extension path
