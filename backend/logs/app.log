@@ -1,0 +1,650 @@
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=400.00 gst=36.36
+2026-06-19 15:17:08 | INFO     | router.orders             | Created order: PO-TEST-001 with 2 items
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:17:08 | INFO     | router.orders             | Created order: PO-DUP-001 with 1 items
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:17:08 | INFO     | router.orders             | Created order: PO-GET-001 with 1 items
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:17:08 | INFO     | router.orders             | Created order: PO-LIST-001 with 1 items
+2026-06-19 15:17:08 | INFO     | router.orders             | list_orders page=1 total=1
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:17:08 | INFO     | router.orders             | Created order: PO-STATUS-001 with 1 items
+2026-06-19 15:17:08 | INFO     | router.orders             | Order PO-STATUS-001 status -> shipped
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:17:08 | INFO     | router.orders             | Created order: PO-DEL-001 with 1 items
+2026-06-19 15:17:08 | INFO     | router.orders             | Deleted order id=1
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=845.00 gst=76.82
+2026-06-19 15:17:08 | DEBUG    | price_service             | subtotal=0.00 gst=0.00
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:08 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:08 | INFO     | database                  | Database tables created
+2026-06-19 15:17:08 | INFO     | router.products           | Created product: NEW001
+2026-06-19 15:17:08 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | router.products           | Created product: DUP01
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | router.products           | Updated product: TEST001 fields=['name', 'rrp']
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | router.products           | Deleted product: TEST001
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | router.tracking           | Added tracking TRACK123 for order 1
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | router.tracking           | Added tracking LIST_T1 for order 1
+2026-06-19 15:17:09 | INFO     | router.tracking           | Added tracking LIST_T2 for order 1
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:09 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:17:09 | INFO     | database                  | Database tables created
+2026-06-19 15:17:09 | INFO     | main                      | Shutting down application
+2026-06-19 15:17:15 | INFO     | seed                      | === Starting database seed ===
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: TBAMET10
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: TBAMET28
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: TBOPAL28
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: HARNIG
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: LELCBD100
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: AURPUR10
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: HALGEO15
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: MCMW10
+2026-06-19 15:17:15 | INFO     | seed                      | Added product: MCBO30
+2026-06-19 15:17:15 | INFO     | seed                      | Created order: PO-20251130-00072 (5 items)
+2026-06-19 15:17:15 | INFO     | seed                      | Created order: PO-20251203-00046 (4 items)
+2026-06-19 15:17:15 | INFO     | seed                      | === Seed complete ===
+2026-06-19 15:24:01 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:24:01 | INFO     | database                  | Database tables created
+2026-06-19 15:24:18 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:27:14 | INFO     | seed                      | === Starting database seed ===
+2026-06-19 15:27:14 | INFO     | seed                      | Product TBAMET10 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product TBAMET28 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product TBOPAL28 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product HARNIG already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product LELCBD100 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product AURPUR10 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product HALGEO15 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product MCMW10 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Product MCBO30 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Order PO-20251130-00072 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | Order PO-20251203-00046 already exists, skipping
+2026-06-19 15:27:14 | INFO     | seed                      | === Seed complete ===
+2026-06-19 15:29:44 | INFO     | seed                      | === Starting database seed ===
+2026-06-19 15:29:44 | INFO     | seed                      | Product TBAMET10 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product TBAMET28 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product TBOPAL28 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product HARNIG already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product LELCBD100 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product AURPUR10 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product HALGEO15 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product MCMW10 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Product MCBO30 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Order PO-20251130-00072 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | Order PO-20251203-00046 already exists, skipping
+2026-06-19 15:29:44 | INFO     | seed                      | === Seed complete ===
+2026-06-19 15:29:51 | INFO     | seed                      | === Starting database seed ===
+2026-06-19 15:29:51 | INFO     | seed                      | Product TBAMET10 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product TBAMET28 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product TBOPAL28 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product HARNIG already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product LELCBD100 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product AURPUR10 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product HALGEO15 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product MCMW10 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Product MCBO30 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Order PO-20251130-00072 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | Order PO-20251203-00046 already exists, skipping
+2026-06-19 15:29:51 | INFO     | seed                      | === Seed complete ===
+2026-06-19 15:30:08 | INFO     | seed                      | === Starting database seed ===
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: TBAMET10
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: TBAMET28
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: TBOPAL28
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: HARNIG
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: LELCBD100
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: AURPUR10
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: HALGEO15
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: MCMW10
+2026-06-19 15:30:08 | INFO     | seed                      | Added product: MCBO30
+2026-06-19 15:30:08 | INFO     | seed                      | Created order: PO-20251130-00072 (5 items)
+2026-06-19 15:30:08 | INFO     | seed                      | Created order: PO-20251203-00046 (4 items)
+2026-06-19 15:30:08 | INFO     | seed                      | === Seed complete ===
+2026-06-19 15:32:01 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:01 | INFO     | database                  | Database tables created
+2026-06-19 15:32:01 | DEBUG    | price_service             | subtotal=400.00 gst=36.36
+2026-06-19 15:32:01 | INFO     | router.orders             | Created order: PO-TEST-001 with 2 items
+2026-06-19 15:32:01 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:01 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:01 | INFO     | database                  | Database tables created
+2026-06-19 15:32:01 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:01 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:01 | INFO     | database                  | Database tables created
+2026-06-19 15:32:01 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:32:01 | INFO     | router.orders             | Created order: PO-DUP-001 with 1 items
+2026-06-19 15:32:01 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:01 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:01 | INFO     | database                  | Database tables created
+2026-06-19 15:32:01 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:32:01 | INFO     | router.orders             | Created order: PO-GET-001 with 1 items
+2026-06-19 15:32:01 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:01 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:01 | INFO     | database                  | Database tables created
+2026-06-19 15:32:01 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:32:01 | INFO     | router.orders             | Created order: PO-LIST-001 with 1 items
+2026-06-19 15:32:01 | INFO     | router.orders             | list_orders page=1 total=1
+2026-06-19 15:32:01 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:01 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:01 | INFO     | database                  | Database tables created
+2026-06-19 15:32:01 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:32:01 | INFO     | router.orders             | Created order: PO-STATUS-001 with 1 items
+2026-06-19 15:32:01 | INFO     | router.orders             | Order PO-STATUS-001 status -> shipped
+2026-06-19 15:32:01 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:32:02 | INFO     | router.orders             | Created order: PO-DEL-001 with 1 items
+2026-06-19 15:32:02 | INFO     | router.orders             | Deleted order id=1
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:32:02 | DEBUG    | price_service             | subtotal=845.00 gst=76.82
+2026-06-19 15:32:02 | DEBUG    | price_service             | subtotal=0.00 gst=0.00
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.products           | Created product: NEW001
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.products           | Created product: DUP01
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.products           | Updated product: TEST001 fields=['name', 'rrp']
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.products           | Deleted product: TEST001
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.tracking           | Added tracking TRACK123 for order 1
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:02 | INFO     | database                  | Database tables created
+2026-06-19 15:32:02 | INFO     | router.tracking           | Added tracking LIST_T1 for order 1
+2026-06-19 15:32:02 | INFO     | router.tracking           | Added tracking LIST_T2 for order 1
+2026-06-19 15:32:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:03 | INFO     | database                  | Database tables created
+2026-06-19 15:32:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:23 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:23 | INFO     | database                  | Database tables created
+2026-06-19 15:32:23 | INFO     | main                      | Shutting down application
+2026-06-19 15:32:45 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:32:45 | INFO     | database                  | Database tables created
+2026-06-19 15:34:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:34:12 | INFO     | database                  | Database tables created
+2026-06-19 15:34:12 | INFO     | main                      | Shutting down application
+2026-06-19 15:35:52 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:35:53 | INFO     | database                  | Database tables created
+2026-06-19 15:37:52 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:38:02 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:38:22 | INFO     | main                      | Shutting down application
+2026-06-19 15:38:25 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:38:25 | INFO     | database                  | Database tables created
+2026-06-19 15:38:30 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:38:31 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:38:36 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 15:38:46 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2000', 'to_postcode': '3000', 'weight': 1.0, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 15:38:46 | INFO     | auspost_service           | Requesting shipping quote: {'from_postcode': '2000', 'to_postcode': '3000', 'length': 20.0, 'width': 15.0, 'height': 10.0, 'weight': 1.0}
+2026-06-19 15:38:48 | ERROR    | auspost_service           | AusPost API error: 405 {"timestamp":"2026-06-19T07:38:47.839+00:00","status":405,"error":"Method Not Allowed","path":"/shipping/v1/prices/items"}
+2026-06-19 15:38:48 | ERROR    | main                      | Unhandled error on POST http://127.0.0.1:8000/api/tracking/shipping-quote: Client error '405 ' for url 'https://digitalapi.auspost.com.au/test/shipping/v1/prices/items?from_postcode=2000&to_postcode=3000&length=20.0&width=15.0&height=10.0&weight=1.0'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 337, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\tracking.py", line 32, in shipping_quote
+    quotes = await auspost_service.get_shipping_quotes(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\services\auspost_service.py", line 50, in get_shipping_quotes
+    resp.raise_for_status()
+  File "D:\Python312\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '405 ' for url 'https://digitalapi.auspost.com.au/test/shipping/v1/prices/items?from_postcode=2000&to_postcode=3000&length=20.0&width=15.0&height=10.0&weight=1.0'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+2026-06-19 15:39:39 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 15:39:54 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:40:27 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:40:29 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 15:40:47 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:40:53 | INFO     | router.orders             | list_orders page=1 total=0
+2026-06-19 15:40:57 | INFO     | router.orders             | list_orders page=1 total=1
+2026-06-19 15:41:12 | INFO     | main                      | Shutting down application
+2026-06-19 15:41:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:41:13 | INFO     | database                  | Database tables created
+2026-06-19 15:41:22 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:41:22 | INFO     | main                      | Shutting down application
+2026-06-19 15:41:23 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:41:23 | INFO     | database                  | Database tables created
+2026-06-19 15:41:23 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 15:41:23 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:41:24 | INFO     | main                      | Shutting down application
+2026-06-19 15:41:25 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:41:25 | INFO     | database                  | Database tables created
+2026-06-19 15:41:28 | INFO     | main                      | Shutting down application
+2026-06-19 15:41:29 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:41:29 | INFO     | database                  | Database tables created
+2026-06-19 15:41:55 | INFO     | main                      | Shutting down application
+2026-06-19 15:41:56 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:41:56 | INFO     | database                  | Database tables created
+2026-06-19 15:42:19 | INFO     | main                      | Shutting down application
+2026-06-19 15:42:20 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:42:20 | INFO     | database                  | Database tables created
+2026-06-19 15:42:27 | INFO     | main                      | Shutting down application
+2026-06-19 15:42:28 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:42:28 | INFO     | database                  | Database tables created
+2026-06-19 15:42:54 | INFO     | main                      | Shutting down application
+2026-06-19 15:42:54 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:42:54 | INFO     | database                  | Database tables created
+2026-06-19 15:43:12 | INFO     | main                      | Shutting down application
+2026-06-19 15:43:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:43:13 | INFO     | database                  | Database tables created
+2026-06-19 15:43:30 | INFO     | main                      | Shutting down application
+2026-06-19 15:43:31 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:43:31 | INFO     | database                  | Database tables created
+2026-06-19 15:43:33 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:43:53 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2000', 'to_postcode': '3000', 'weight': 0.5, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 15:43:53 | INFO     | auspost_service           | Requesting shipping quote: {'from_postcode': '2000', 'to_postcode': '3000', 'length': 20.0, 'width': 15.0, 'height': 10.0, 'weight': 0.5}
+2026-06-19 15:43:55 | ERROR    | auspost_service           | AusPost API error: 405 {"timestamp":"2026-06-19T07:43:55.273+00:00","status":405,"error":"Method Not Allowed","path":"/shipping/v1/prices/items"}
+2026-06-19 15:43:55 | ERROR    | main                      | Unhandled error on POST http://127.0.0.1:8000/api/tracking/shipping-quote: Client error '405 ' for url 'https://digitalapi.auspost.com.au/test/shipping/v1/prices/items?from_postcode=2000&to_postcode=3000&length=20.0&width=15.0&height=10.0&weight=0.5'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 337, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\tracking.py", line 53, in shipping_quote
+    quotes = await auspost_service.get_shipping_quotes(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\services\auspost_service.py", line 82, in get_shipping_quotes
+    resp.raise_for_status()
+  File "D:\Python312\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '405 ' for url 'https://digitalapi.auspost.com.au/test/shipping/v1/prices/items?from_postcode=2000&to_postcode=3000&length=20.0&width=15.0&height=10.0&weight=0.5'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+2026-06-19 15:44:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:02 | INFO     | database                  | Database tables created
+2026-06-19 15:44:02 | DEBUG    | price_service             | subtotal=400.00 gst=36.36
+2026-06-19 15:44:02 | INFO     | router.orders             | Created order: PO-TEST-001 with 2 items
+2026-06-19 15:44:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:02 | INFO     | database                  | Database tables created
+2026-06-19 15:44:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:02 | INFO     | database                  | Database tables created
+2026-06-19 15:44:02 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:44:02 | INFO     | router.orders             | Created order: PO-DUP-001 with 1 items
+2026-06-19 15:44:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:02 | INFO     | database                  | Database tables created
+2026-06-19 15:44:02 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:44:02 | INFO     | router.orders             | Created order: PO-GET-001 with 1 items
+2026-06-19 15:44:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:02 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:02 | INFO     | database                  | Database tables created
+2026-06-19 15:44:02 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:44:02 | INFO     | router.orders             | Created order: PO-LIST-001 with 1 items
+2026-06-19 15:44:02 | INFO     | router.orders             | list_orders page=1 total=1
+2026-06-19 15:44:02 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:44:03 | INFO     | router.orders             | Created order: PO-STATUS-001 with 1 items
+2026-06-19 15:44:03 | INFO     | router.orders             | Order PO-STATUS-001 status -> shipped
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:44:03 | INFO     | router.orders             | Created order: PO-DEL-001 with 1 items
+2026-06-19 15:44:03 | INFO     | router.orders             | Deleted order id=1
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | DEBUG    | price_service             | subtotal=100.00 gst=9.09
+2026-06-19 15:44:03 | DEBUG    | price_service             | subtotal=845.00 gst=76.82
+2026-06-19 15:44:03 | DEBUG    | price_service             | subtotal=0.00 gst=0.00
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | router.products           | Created product: NEW001
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | router.products           | Created product: DUP01
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | router.products           | Updated product: TEST001 fields=['name', 'rrp']
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | router.products           | Deleted product: TEST001
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:03 | INFO     | database                  | Database tables created
+2026-06-19 15:44:03 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:04 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:04 | INFO     | database                  | Database tables created
+2026-06-19 15:44:04 | INFO     | router.tracking           | Added tracking TRACK123 for order 1
+2026-06-19 15:44:04 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:04 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:04 | INFO     | database                  | Database tables created
+2026-06-19 15:44:04 | INFO     | router.tracking           | Added tracking LIST_T1 for order 1
+2026-06-19 15:44:04 | INFO     | router.tracking           | Added tracking LIST_T2 for order 1
+2026-06-19 15:44:04 | INFO     | main                      | Shutting down application
+2026-06-19 15:44:04 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:44:04 | INFO     | database                  | Database tables created
+2026-06-19 15:44:04 | INFO     | main                      | Shutting down application
+2026-06-19 15:45:43 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:47:18 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:47:23 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:47:36 | INFO     | router.orders             | Order PO-20251130-00072 status -> in_transit
+2026-06-19 15:47:37 | INFO     | router.orders             | Order PO-20251130-00072 status -> completed
+2026-06-19 15:47:41 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:47:42 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 15:47:50 | INFO     | router.products           | Updated product: AURPUR10 fields=['name', 'description', 'rrp', 'weight', 'category']
+2026-06-19 15:47:50 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 15:47:54 | INFO     | router.products           | Updated product: AURPUR10 fields=['name', 'description', 'rrp', 'weight', 'category']
+2026-06-19 15:47:54 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 15:48:08 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 15:49:01 | INFO     | router.products           | Created product: Halo Geo 15g Test
+2026-06-19 15:49:01 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 15:49:14 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:49:20 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:50:05 | INFO     | main                      | Shutting down application
+2026-06-19 15:50:06 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:50:06 | INFO     | database                  | Database tables created
+2026-06-19 15:50:18 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:50:30 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:50:54 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 15:51:15 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:51:16 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 15:51:51 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 15:51:51 | INFO     | main                      | Shutting down application
+2026-06-19 15:51:52 | INFO     | main                      | Starting application — initialising database
+2026-06-19 15:51:52 | INFO     | database                  | Database tables created
+2026-06-19 15:51:52 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 15:52:07 | DEBUG    | price_service             | subtotal=395.00 gst=35.91
+2026-06-19 15:52:07 | INFO     | router.orders             | Created order: PO-20251203-00058 with 2 items
+2026-06-19 15:52:07 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:52:15 | INFO     | router.orders             | Order PO-20251203-00058 status -> in_transit
+2026-06-19 15:52:27 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:52:41 | INFO     | router.orders             | list_orders page=1 total=1
+2026-06-19 15:52:48 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:53:03 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 15:53:22 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:53:24 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:53:26 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:53:27 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:55:50 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 15:55:59 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 15:56:56 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 15:57:24 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2000', 'to_postcode': '3000', 'weight': 0.5, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 15:57:24 | INFO     | auspost_service           | Requesting shipping quote: {'from_postcode': '2000', 'to_postcode': '3000', 'length': 20.0, 'width': 15.0, 'height': 10.0, 'weight': 0.5}
+2026-06-19 15:57:25 | ERROR    | auspost_service           | AusPost API error: 405 {"timestamp":"2026-06-19T07:57:25.542+00:00","status":405,"error":"Method Not Allowed","path":"/shipping/v1/prices/items"}
+2026-06-19 15:57:25 | ERROR    | main                      | Unhandled error on POST http://127.0.0.1:8000/api/tracking/shipping-quote: Client error '405 ' for url 'https://digitalapi.auspost.com.au/test/shipping/v1/prices/items?from_postcode=2000&to_postcode=3000&length=20.0&width=15.0&height=10.0&weight=0.5'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 337, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\tracking.py", line 53, in shipping_quote
+    quotes = await auspost_service.get_shipping_quotes(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\services\auspost_service.py", line 82, in get_shipping_quotes
+    resp.raise_for_status()
+  File "D:\Python312\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '405 ' for url 'https://digitalapi.auspost.com.au/test/shipping/v1/prices/items?from_postcode=2000&to_postcode=3000&length=20.0&width=15.0&height=10.0&weight=0.5'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+2026-06-19 16:03:10 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:03:14 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:03:15 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 16:04:03 | INFO     | main                      | Shutting down application
+2026-06-19 16:04:04 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:04:04 | INFO     | database                  | Database tables created
+2026-06-19 16:04:27 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 16:04:29 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:04:31 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:04:41 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2000', 'to_postcode': '3000', 'weight': 1.0, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 16:04:41 | INFO     | auspost_service           | Requesting shipping quote: 2000 -> 3000, 1.00kg
+2026-06-19 16:04:44 | INFO     | auspost_service           | Got 5 shipping quotes
+2026-06-19 16:04:59 | INFO     | router.tracking           | Query tracking: carrier=auspost number=DEF987654321
+2026-06-19 16:04:59 | INFO     | auspost_service           | Tracking shipment: DEF987654321
+2026-06-19 16:05:02 | INFO     | main                      | Shutting down application
+2026-06-19 16:05:03 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:05:03 | INFO     | database                  | Database tables created
+2026-06-19 16:05:05 | INFO     | router.tracking           | Query tracking: carrier=tnt number=GHI111222333
+2026-06-19 16:05:05 | INFO     | tnt_service               | TNT tracking (degraded): GHI111222333
+2026-06-19 16:05:13 | INFO     | router.tracking           | Query tracking: carrier=auspost number=ABC123456789
+2026-06-19 16:05:13 | INFO     | auspost_service           | Tracking shipment: ABC123456789
+2026-06-19 16:06:28 | INFO     | main                      | Shutting down application
+2026-06-19 16:06:29 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:06:29 | INFO     | database                  | Database tables created
+2026-06-19 16:06:50 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:06:52 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:07:55 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:08:18 | INFO     | main                      | Shutting down application
+2026-06-19 16:08:20 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:08:20 | INFO     | database                  | Database tables created
+2026-06-19 16:08:27 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:08:42 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2000', 'to_postcode': '3000', 'weight': 1.0, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 16:08:42 | INFO     | auspost_service           | Requesting shipping quote: 2000 -> 3000, 1.00kg
+2026-06-19 16:08:44 | INFO     | auspost_service           | Got 5 shipping quotes
+2026-06-19 16:11:05 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:11:09 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:11:14 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:11:15 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 16:12:11 | DEBUG    | price_service             | subtotal=495.00 gst=45.00
+2026-06-19 16:12:11 | INFO     | router.orders             | Created order: GO-123-Order with 1 items
+2026-06-19 16:12:11 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:12:20 | INFO     | router.orders             | Order GO-123-Order status -> cancelled
+2026-06-19 16:12:22 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:12:23 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:12:25 | INFO     | router.orders             | list_orders page=1 total=1
+2026-06-19 16:12:36 | INFO     | router.products           | list_products page=1 total=10
+2026-06-19 16:13:18 | INFO     | router.products           | Created product: MCBO499
+2026-06-19 16:13:18 | INFO     | router.products           | list_products page=1 total=11
+2026-06-19 16:13:26 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:13:54 | INFO     | router.orders             | list_orders page=1 total=4
