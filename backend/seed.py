@@ -1,4 +1,4 @@
-"""Seed the database with product data and sample orders."""
+"""Seed the database with product data and sample orders matching the assessment specification."""
 
 import sys
 from datetime import datetime, timedelta
@@ -7,6 +7,8 @@ from sqlalchemy.orm import Session
 
 from database import engine, Base, SessionLocal
 from models.db_models import Product, Order, OrderItem, Tracking, TrackingEvent
+from services.price_service import calculate_line_total, calculate_order_totals
+from utils import parse_numeric, safe_str
 from logger import get_logger
 
 log = get_logger("seed")
@@ -18,7 +20,18 @@ PRODUCTS = [
         "description": "Pastilles - 30 pack, 30:15 Indica",
         "rrp": 175.00,
         "weight": 0.2,
+        "volumetric_gross_weight": 0.2,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "volume": 1000.0,
         "category": "Pastille",
+        "barcode": "998855",
+        "dosage_type": "Pastille",
+        "product_type": "Finished products",
+        "size": "1350",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=TBAMET10",
     },
     {
         "sku": "TBAMET28",
@@ -26,7 +39,18 @@ PRODUCTS = [
         "description": "Pastilles - 28 pack, 30:15 Indica",
         "rrp": 165.00,
         "weight": 0.2,
+        "volumetric_gross_weight": 0.2,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "volume": 1000.0,
         "category": "Pastille",
+        "barcode": "",
+        "dosage_type": "Pastille",
+        "product_type": "Finished products",
+        "size": "840",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=TBAMET28",
     },
     {
         "sku": "TBOPAL28",
@@ -34,7 +58,18 @@ PRODUCTS = [
         "description": "Opal Pastilles - 28 pack",
         "rrp": 155.00,
         "weight": 0.2,
+        "volumetric_gross_weight": 0.2,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "volume": 1000.0,
         "category": "Pastille",
+        "barcode": "",
+        "dosage_type": "Pastille",
+        "product_type": "Finished products",
+        "size": "840",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=TBOPAL28",
     },
     {
         "sku": "HARNIG",
@@ -42,7 +77,18 @@ PRODUCTS = [
         "description": "Night Oil",
         "rrp": 145.00,
         "weight": 0.15,
+        "volumetric_gross_weight": 0.1,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 10.0,
+        "volume": 250.0,
         "category": "Oil",
+        "barcode": "",
+        "dosage_type": "Oral liquid",
+        "product_type": "Finished products",
+        "size": "30",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=HARNIG",
     },
     {
         "sku": "LELCBD100",
@@ -50,7 +96,18 @@ PRODUCTS = [
         "description": "CBD Oil 100mg",
         "rrp": 89.00,
         "weight": 0.1,
+        "volumetric_gross_weight": 0.1,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 10.0,
+        "volume": 250.0,
         "category": "Oil",
+        "barcode": "",
+        "dosage_type": "Oral liquid",
+        "product_type": "Finished products",
+        "size": "30",
+        "schedule": "4",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=LELCBD100",
     },
     {
         "sku": "AURPUR10",
@@ -58,7 +115,18 @@ PRODUCTS = [
         "description": "Purple strain 10 pack",
         "rrp": 135.00,
         "weight": 0.3,
+        "volumetric_gross_weight": 0.2,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "volume": 1000.0,
         "category": "Flower",
+        "barcode": "",
+        "dosage_type": "Herb,dried",
+        "product_type": "Finished products",
+        "size": "10",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=AURPUR10",
     },
     {
         "sku": "HALGEO15",
@@ -66,7 +134,18 @@ PRODUCTS = [
         "description": "Geo strain 15g",
         "rrp": 210.00,
         "weight": 0.15,
+        "volumetric_gross_weight": 0.15,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "volume": 1000.0,
         "category": "Flower",
+        "barcode": "",
+        "dosage_type": "Herb,dried",
+        "product_type": "Finished products",
+        "size": "15",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=HALGEO15",
     },
     {
         "sku": "MCMW10",
@@ -74,7 +153,18 @@ PRODUCTS = [
         "description": "MW strain 10g",
         "rrp": 149.00,
         "weight": 0.1,
+        "volumetric_gross_weight": 0.1,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "volume": 1000.0,
         "category": "Flower",
+        "barcode": "",
+        "dosage_type": "Herb,dried",
+        "product_type": "Finished products",
+        "size": "10",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=MCMW10",
     },
     {
         "sku": "MCBO30",
@@ -82,68 +172,84 @@ PRODUCTS = [
         "description": "BO Oil 30ml",
         "rrp": 195.00,
         "weight": 0.12,
+        "volumetric_gross_weight": 0.1,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 10.0,
+        "volume": 250.0,
         "category": "Oil",
+        "barcode": "",
+        "dosage_type": "Oral liquid",
+        "product_type": "Finished products",
+        "size": "30",
+        "schedule": "8",
+        "image_url": "https://placehold.co/120x120/e2e8f0/475569?text=MCBO30",
     },
 ]
 
-_base_time = datetime(2025, 11, 30, 9, 0, 0)
+_base_time_1 = datetime(2025, 11, 30, 9, 0, 0)
+_base_time_2 = datetime(2025, 12, 3, 9, 0, 0)
 
 SAMPLE_ORDERS = [
     {
         "order_number": "PO-20251130-00072",
+        "order_date": _base_time_1,
+        "company_name": "V22 Dispensary",
         "customer_name": "Jason Hu",
-        "customer_email": "jason@v22dispensary.com",
-        "shipping_address": "V22 Dispensary, 45 Oxford St, Sydney NSW 2000",
+        "customer_phone": "0481 735 488",
+        "customer_email": "Jason@aerishealth.au",
+        "shipping_address": "125 Toorak Road, South Yarra VIC 3141",
         "status": "completed",
         "items": [
-            {"sku": "TBAMET10", "quantity": 3},
-            {"sku": "TBAMET28", "quantity": 1},
-            {"sku": "TBOPAL28", "quantity": 1},
-            {"sku": "HARNIG", "quantity": 4},
-            {"sku": "LELCBD100", "quantity": 6},
+            {"sku": "TBAMET10", "quantity": 3, "assigned_tracking": "Track 1"},
+            {"sku": "TBAMET28", "quantity": 1, "assigned_tracking": "Track 1"},
+            {"sku": "TBOPAL28", "quantity": 1, "assigned_tracking": "Track 1"},
+            {"sku": "HARNIG", "quantity": 4, "assigned_tracking": "Track 1"},
+            {"sku": "LELCBD100", "quantity": 6, "assigned_tracking": "Track 1"},
         ],
         "tracking": [
             {
-                "carrier": "StarTrack",
-                "tracking_number": "ABC123456789",
+                "carrier": "StarTrack/Auspost",
+                "tracking_number": "2FWZ50008569",
+                "tracking_label": "Track 1",
                 "status": "delivered",
-                "current_location": "Sydney Distribution Centre",
-                "estimated_delivery": _base_time + timedelta(days=4),
+                "current_location": "South Yarra VIC",
+                "estimated_delivery": _base_time_1 + timedelta(days=4),
                 "events": [
                     {
-                        "event_time": _base_time,
+                        "event_time": _base_time_1,
                         "status": "Order Placed",
-                        "location": "Melbourne Warehouse",
+                        "location": "Ryde NSW 2111",
                         "description": "Order has been confirmed and is being prepared for shipment.",
                     },
                     {
-                        "event_time": _base_time + timedelta(hours=6),
+                        "event_time": _base_time_1 + timedelta(hours=6),
                         "status": "Picked Up",
-                        "location": "Melbourne Warehouse",
+                        "location": "Ryde NSW 2111",
                         "description": "Package has been picked up by StarTrack courier.",
                     },
                     {
-                        "event_time": _base_time + timedelta(days=1, hours=2),
+                        "event_time": _base_time_1 + timedelta(days=1, hours=2),
                         "status": "In Transit",
-                        "location": "Melbourne Distribution Centre",
-                        "description": "Package departed from Melbourne, heading to Sydney.",
-                    },
-                    {
-                        "event_time": _base_time + timedelta(days=2, hours=5),
-                        "status": "Arrived",
                         "location": "Sydney Distribution Centre",
-                        "description": "Package arrived at Sydney distribution centre.",
+                        "description": "Package departed from Sydney, heading to Melbourne.",
                     },
                     {
-                        "event_time": _base_time + timedelta(days=3, hours=1),
+                        "event_time": _base_time_1 + timedelta(days=2, hours=5),
+                        "status": "Arrived",
+                        "location": "Melbourne Distribution Centre",
+                        "description": "Package arrived at Melbourne distribution centre.",
+                    },
+                    {
+                        "event_time": _base_time_1 + timedelta(days=3, hours=1),
                         "status": "Out for Delivery",
-                        "location": "Sydney Local Depot",
-                        "description": "Package is out for delivery to destination.",
+                        "location": "South Yarra VIC",
+                        "description": "Package is out for delivery to 125 Toorak Road.",
                     },
                     {
-                        "event_time": _base_time + timedelta(days=3, hours=6),
+                        "event_time": _base_time_1 + timedelta(days=3, hours=6),
                         "status": "Delivered",
-                        "location": "V22 Dispensary, Sydney NSW",
+                        "location": "125 Toorak Road, South Yarra VIC 3141",
                         "description": "Package has been delivered successfully. Signed by Jason H.",
                     },
                 ],
@@ -151,45 +257,49 @@ SAMPLE_ORDERS = [
         ],
     },
     {
-        "order_number": "PO-20251203-00046",
+        "order_number": "PO-20251202-00046",
+        "order_date": _base_time_2,
+        "company_name": "Cann Life Dispensary",
         "customer_name": "Bella Dari",
-        "customer_email": "bella@cannlife.com",
-        "shipping_address": "Cann Life Dispensary, 120 Collins St, Melbourne VIC 3000",
+        "customer_phone": "0411 547 288",
+        "customer_email": "Bella@aerishealth.au",
+        "shipping_address": "381 Smith Street, Fitzroy VIC 3065",
         "status": "in_transit",
         "items": [
-            {"sku": "AURPUR10", "quantity": 10},
-            {"sku": "HALGEO15", "quantity": 1},
-            {"sku": "MCMW10", "quantity": 2},
-            {"sku": "MCBO30", "quantity": 3},
+            {"sku": "AURPUR10", "quantity": 10, "assigned_tracking": "Track 2"},
+            {"sku": "HALGEO15", "quantity": 1, "assigned_tracking": "Track 3"},
+            {"sku": "MCMW10", "quantity": 2, "assigned_tracking": "Track 3"},
+            {"sku": "MCBO30", "quantity": 3, "assigned_tracking": "Track 3"},
         ],
         "tracking": [
             {
-                "carrier": "StarTrack",
-                "tracking_number": "DEF987654321",
+                "carrier": "StarTrack/Auspost",
+                "tracking_number": "2FWZ50008645",
+                "tracking_label": "Track 2",
                 "status": "in_transit",
-                "current_location": "Sydney Distribution Centre",
-                "estimated_delivery": _base_time + timedelta(days=8),
+                "current_location": "Canberra Sort Facility",
+                "estimated_delivery": _base_time_2 + timedelta(days=5),
                 "events": [
                     {
-                        "event_time": _base_time + timedelta(days=3),
+                        "event_time": _base_time_2,
                         "status": "Order Placed",
-                        "location": "Sydney Warehouse",
+                        "location": "Ryde NSW 2111",
                         "description": "Order confirmed, preparing shipment.",
                     },
                     {
-                        "event_time": _base_time + timedelta(days=3, hours=8),
+                        "event_time": _base_time_2 + timedelta(hours=8),
                         "status": "Picked Up",
-                        "location": "Sydney Warehouse",
+                        "location": "Ryde NSW 2111",
                         "description": "Package collected by StarTrack courier.",
                     },
                     {
-                        "event_time": _base_time + timedelta(days=4, hours=3),
+                        "event_time": _base_time_2 + timedelta(days=1, hours=3),
                         "status": "In Transit",
                         "location": "Sydney Distribution Centre",
                         "description": "Package departed from Sydney, heading to Melbourne.",
                     },
                     {
-                        "event_time": _base_time + timedelta(days=5, hours=2),
+                        "event_time": _base_time_2 + timedelta(days=2, hours=2),
                         "status": "Processing",
                         "location": "Canberra Sort Facility",
                         "description": "Package is being sorted at interim facility.",
@@ -198,15 +308,16 @@ SAMPLE_ORDERS = [
             },
             {
                 "carrier": "TNT",
-                "tracking_number": "GHI111222333",
+                "tracking_number": "305506914",
+                "tracking_label": "Track 3",
                 "status": "pending",
-                "current_location": "Sydney Warehouse",
-                "estimated_delivery": _base_time + timedelta(days=9),
+                "current_location": "Ryde NSW 2111",
+                "estimated_delivery": _base_time_2 + timedelta(days=6),
                 "events": [
                     {
-                        "event_time": _base_time + timedelta(days=3),
+                        "event_time": _base_time_2,
                         "status": "Order Placed",
-                        "location": "Sydney Warehouse",
+                        "location": "Ryde NSW 2111",
                         "description": "Merchant is preparing shipment.",
                     },
                 ],
@@ -237,49 +348,51 @@ def seed_orders(db: Session):
             log.info("Order %s already exists, skipping", order_data["order_number"])
             continue
 
-        subtotal = 0.0
-        line_items = []
+        line_items_data = []
         for item in order_data["items"]:
             prod = product_map.get(item["sku"])
             if not prod:
                 log.warning("SKU %s not found in products, skipping", item["sku"])
                 continue
-            lt = round(prod.rrp * item["quantity"], 2)
-            subtotal += lt
-            line_items.append(
-                OrderItem(
-                    sku=prod.sku,
-                    product_name=prod.name,
-                    quantity=item["quantity"],
-                    unit_price=prod.rrp,
-                    line_total=lt,
-                )
-            )
+            lt = calculate_line_total(prod.rrp, item["quantity"])
+            line_items_data.append({
+                "sku": prod.sku,
+                "product_name": prod.name,
+                "quantity": item["quantity"],
+                "unit_price": prod.rrp,
+                "line_total": lt,
+                "assigned_tracking": item.get("assigned_tracking", ""),
+                "image_url": prod.image_url or "",
+            })
 
-        gst = round(subtotal * 10 / 110, 2)
+        totals = calculate_order_totals(line_items_data)
 
         order = Order(
             order_number=order_data["order_number"],
+            company_name=order_data.get("company_name", ""),
             customer_name=order_data["customer_name"],
+            customer_phone=order_data.get("customer_phone", ""),
             customer_email=order_data["customer_email"],
             shipping_address=order_data["shipping_address"],
             status=order_data["status"],
-            subtotal=subtotal,
-            gst=gst,
-            total=subtotal,
+            subtotal=totals["subtotal"],
+            gst=totals["gst"],
+            shipping_fee=totals["shipping_fee"],
+            total=totals["total"],
+            created_at=order_data.get("order_date", datetime.utcnow()),
         )
         db.add(order)
         db.flush()
 
-        for li in line_items:
-            li.order_id = order.id
-            db.add(li)
+        for li in line_items_data:
+            db.add(OrderItem(order_id=order.id, **li))
 
         for t in order_data.get("tracking", []):
             tracking = Tracking(
                 order_id=order.id,
                 carrier=t["carrier"],
                 tracking_number=t["tracking_number"],
+                tracking_label=t.get("tracking_label", ""),
                 status=t["status"],
                 current_location=t.get("current_location", ""),
                 estimated_delivery=t.get("estimated_delivery"),
@@ -298,13 +411,14 @@ def seed_orders(db: Session):
                     )
                 )
 
-        log.info("Created order: %s (%d items)", order.order_number, len(line_items))
+        log.info("Created order: %s (%d items)", order.order_number, len(line_items_data))
 
     db.commit()
 
 
 def main():
     log.info("=== Starting database seed ===")
+    Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
     db = SessionLocal()

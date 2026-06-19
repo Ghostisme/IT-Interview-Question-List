@@ -22,21 +22,21 @@ import type { ShippingQuote, TrackingQuery } from "../types";
 /* ------------------------------------------------------------------ */
 
 const QUOTE_EXAMPLES = [
-  { label: "Sydney → Melbourne (0.5kg)", from: "2000", to: "3000", weight: "0.5" },
-  { label: "Melbourne → Brisbane (2kg)", from: "3000", to: "4000", weight: "2.0" },
+  { label: "Ryde → South Yarra (0.5kg)", from: "2111", to: "3141", weight: "0.5" },
+  { label: "Ryde → Fitzroy (2kg)", from: "2111", to: "3065", weight: "2.0" },
   { label: "Sydney → Perth (5kg)", from: "2000", to: "6000", weight: "5.0" },
-  { label: "Adelaide → Hobart (1kg)", from: "5000", to: "7000", weight: "1.0" },
+  { label: "Melbourne → Brisbane (1kg)", from: "3000", to: "4000", weight: "1.0" },
 ] as const;
 
 const TRACKING_EXAMPLES = [
-  { label: "StarTrack — ABC123456789", number: "ABC123456789", carrier: "auspost" },
-  { label: "StarTrack — DEF987654321", number: "DEF987654321", carrier: "auspost" },
-  { label: "TNT — GHI111222333", number: "GHI111222333", carrier: "tnt" },
+  { label: "StarTrack — 2FWZ50008569", number: "2FWZ50008569", carrier: "auspost" },
+  { label: "StarTrack — 2FWZ50008645", number: "2FWZ50008645", carrier: "auspost" },
+  { label: "TNT — 305506914", number: "305506914", carrier: "tnt" },
 ] as const;
 
 export default function ShippingPage() {
-  const [fromPostcode, setFromPostcode] = useState("2000");
-  const [toPostcode, setToPostcode] = useState("3000");
+  const [fromPostcode, setFromPostcode] = useState("2111");
+  const [toPostcode, setToPostcode] = useState("3141");
   const [weight, setWeight] = useState("1.0");
   const [trackingNumber, setTrackingNumber] = useState("");
   const [carrier, setCarrier] = useState("auspost");

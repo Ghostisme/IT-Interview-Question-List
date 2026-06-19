@@ -126,6 +126,120 @@ products ────── orders ─┬── order_items
 | Error Leakage / 错误泄露 | Global exception handler returns generic messages / 全局异常处理器，不暴露堆栈 |
 | External Credentials / 外部凭证 | `pydantic-settings` type-safe env var loading / 类型安全的环境变量加载 |
 
+### 2.7 B-side vs C-side Module Positioning / B 端与 C 端模块定位分析
+
+#### The Question / 核心问题
+
+Are Products, Orders, and Shipping Tools enterprise-internal (B-side) modules, while Logistics is a consumer-facing (C-side) module? Does this align with the assessment requirements and real-world architecture?
+
+Products、Orders、Shipping Tools 是面向企业内部的 B 端模块，而 Logistics 是面向终端消费者的 C 端模块——这种划分是否符合考题要求和真实业务场景？
+
+#### Module Classification / 模块分类
+
+| Module / 模块 | Classification / 定位 | Rationale / 依据 |
+|---|---|---|
+| **Products** | Pure B-side / 纯 B 端 | Product catalog management (SKU, pricing, inventory) is a back-office operation never exposed to end consumers / 产品目录管理属于后台运营，不会暴露给终端消费者 |
+| **Orders** | Pure B-side / 纯 B 端 | Order creation, status management, and price calculation are internal business workflows; C-side users can only view their own orders, not perform CRUD / 订单 CRUD 是内部业务流，C 端用户最多只能查看自己的订单 |
+| **Shipping Tools** | Pure B-side / 纯 B 端 | Shipping cost estimation and batch tracking queries are warehouse/operations staff tools; C-side users don't manually input postcodes and parcel dimensions / 运费估算是仓库运营人员的内部工具 |
+| **Logistics** | B/C Hybrid (C-side UI, B-side data) / B/C 混合体 | The timeline visualization mimics AusPost's consumer-facing tracking experience, but the current implementation allows browsing all orders (B-side behavior) / 时间线 UI 模仿了 C 端体验，但数据权限仍是 B 端模式 |
+
+#### Why Logistics is a Hybrid, Not Pure C-side / 为什么 Logistics 是混合体而非纯 C 端
+
+Based on AusPost's official architecture ([StarTrack Fact Sheet](https://auspost.com.au/content/dam/auspost_corp/media/documents/startrack-fact-sheet-improving-your-customers-track-experience.pdf), [AusPost Developer Centre](https://auspost.com.au/integrate-shipping-and-tracking-apis)), logistics tracking in real-world systems has two distinct layers:
+
+根据 AusPost 官方架构，物流追踪在真实系统中分为两层：
+
+**B-side (Enterprise Internal) / B 端（企业内部）**：
+- Operations staff manage all parcels via Business Support Portal (BSP) or MyStarTrack Online / 运营人员通过 BSP 或 MyStarTrack Online 管理全部包裹
+- Bulk tracking, recall, redirect capabilities / 批量追踪、召回、重定向
+- Full visibility across all orders / 可见全量订单
+
+**C-side (Consumer) / C 端（消费者）**：
+- Customers query a single tracking number via AusPost App or `auspost.com.au/track` / 客户通过 App 或网页输入单个追踪号
+- Can only see their own package / 只能看到自己的包裹
+- Self-service features: Safe Drop, Redirect / 自助服务功能
+- No login required / 无需登录
+
+**Current Logistics module status / 当前 Logistics 模块状态**：
+- ✅ UI presentation → Mimics C-side timeline experience / UI 呈现模仿 C 端时间线
+- ⚠️ Data permissions → Can browse all orders (B-side behavior) / 可浏览所有订单（B 端行为）
+- ⚠️ Entry method → Dropdown order selector (B-side), not tracking number input (C-side) / 下拉选择器（B 端），而非追踪号输入（C 端）
+
+#### Alignment with Assessment Requirements / 与考题的匹配度
+
+The original assessment requirements specify:
+
+考题原始要求：
+
+> 1. A script/application that reads order files, SKU files, calculates Subtotal/GST/Total, retrieves tracking via API, estimates shipping fees
+> 2. A simple output view (console, web page, or JSON) showing order header, SKU lines, tracking info, financial summary
+
+**The assessment is fundamentally a B-side internal tool** — all 4 provided images and deliverables target an internal operations perspective. There is no mention of user authentication, customer self-service portals, or B2C interfaces.
+
+**考题本质上是一个纯 B 端内部工具** — 4 张图片和交付物均指向企业内部操作人员视角，未涉及用户认证、客户自助门户或 B2C 界面。
+
+| Dimension / 维度 | Assessment Req. / 考题要求 | Implementation / 当前实现 | Evaluation / 评价 |
+|---|---|---|---|
+| Core features / 核心功能 | Data reading + calculation + tracking + output | ✅ Fully covered / 完全覆盖 | Meets requirements / 满足要求 |
+| Output format / 输出方式 | "console, web page, or JSON" | ✅ Web + JSON endpoint | Exceeds expectations / 超出预期 |
+| Architecture / 架构 | Not explicitly required | ✅ Full-stack + REST API + ORM | **Highlight**: architectural capability / 展示架构能力 |
+| Module separation / 模块划分 | Not explicitly required | ✅ 4 independent modules | **Highlight**: modular thinking / 模块化思维 |
+| B/C-side awareness / B/C 端意识 | Not explicitly required | ✅ Proactively identified | **Bonus**: business understanding / 业务理解力 |
+
+#### Real-World Industry Practice / 真实场景行业实践
+
+Based on industry research ([Shopify B2B Architecture](https://www.shopify.com/enterprise/blog/b2b-ecommerce-software-architecture), [Emporix OMS Guide](https://www.emporix.com/blog/order-management-system-b2b-guide), [Infios OMS](https://www.infios.com/en/supply-chain-solutions/order-management-and-commerce-engagement)), production OMS systems adopt a B/C separation architecture:
+
+根据行业研究，生产级 OMS 系统采用 B/C 分离架构：
+
+```
+┌──────────────────────────────────────────────────┐
+│         B-side — Enterprise Back-office            │
+│         B 端 — 企业后台                             │
+│  Products (CRUD) │ Orders (CRUD)                   │
+│  Shipping Tools  │ Batch Tracking                  │
+│  Reports / Analytics │ Inventory                   │
+│  → Requires login + role-based permissions         │
+│  → 需要登录 + 角色权限                              │
+└──────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────┐
+│         C-side — Customer Portal                   │
+│         C 端 — 客户门户                             │
+│  Order inquiry (own orders only)                   │
+│  Tracking (by tracking number)                     │
+│  Self-service (Safe Drop / Redirect)               │
+│  → Public or customer login                        │
+│  → 公开访问或客户登录                                │
+└──────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────┐
+│         Shared Layer — Backend API                  │
+│         共享层 — 后端 API                           │
+│  FastAPI / Node.js                                 │
+│  Database + External APIs (AusPost/TNT)            │
+│  → API permissions differentiate B/C data scope    │
+│  → 通过 API 权限区分 B/C 端数据范围                  │
+└──────────────────────────────────────────────────┘
+```
+
+#### Conclusion / 结论
+
+1. **The B/C-side classification is directionally correct** — Products, Orders, Shipping Tools are B-side; Logistics UI leans C-side
+   / **B/C 端划分方向正确** — Products、Orders、Shipping Tools 是 B 端；Logistics UI 偏 C 端
+
+2. **The assessment itself is a pure B-side scenario** — all requirements target internal operations staff
+   / **考题本身是纯 B 端场景** — 所有需求指向内部运营人员
+
+3. **The Logistics module is a deliberate hybrid** — C-side UI style + B-side data model, demonstrating that the same data can serve different audiences through different presentation layers
+   / **Logistics 是刻意的混合体** — C 端 UI + B 端数据模型，展示同一数据可通过不同呈现层服务不同受众
+
+4. **To convert to a true C-side module**, it would need: tracking number input (instead of order dropdown), removal of internal data (phone, email), and public access without login
+   / **转换为真正 C 端**需要：追踪号输入、移除内部信息、无需登录
+
+5. **Interview positioning** — "The system is built as a B-side internal tool (matching assessment requirements), but the Logistics module's timeline UI references AusPost's consumer-facing tracking experience. Extending it to a C-side portal would only require adding permission isolation and a tracking number query entry point."
+   / **面试定位** — "系统以 B 端内部工具为核心（符合考题），Logistics 的时间线 UI 参考了 AusPost C 端体验，扩展为 C 端门户只需增加权限隔离和追踪号入口。"
+
 ---
 
 ## 3. Challenges & Solutions / 问题与解决
@@ -207,3 +321,5 @@ Dual-channel logging output / 双通道日志输出：
   / **测试覆盖** — 前后端共 34 个自动化测试
 - **Security-first** — No credentials in source code, parameterized queries, CORS, input validation
   / **安全优先** — 源码无凭证、参数化查询、CORS、输入校验
+- **B/C-side architectural awareness** — Proactively identified module positioning (B-side internal ops vs C-side consumer portal) with industry-backed analysis and clear extension path
+  / **B/C 端架构意识** — 主动识别模块定位（B 端内部运营 vs C 端消费者门户），结合行业实践分析并提供清晰的扩展路径

@@ -58,13 +58,15 @@ function CreateOrderModal({
   error,
 }: {
   onClose: () => void;
-  onSave: (data: { order_number: string; customer_name: string; customer_email: string; shipping_address: string; items: OrderLineForm[] }) => void;
+  onSave: (data: { order_number: string; company_name: string; customer_name: string; customer_phone: string; customer_email: string; shipping_address: string; items: OrderLineForm[] }) => void;
   saving: boolean;
   products: Product[];
   error: string | null;
 }) {
   const [orderNumber, setOrderNumber] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
   const [items, setItems] = useState<OrderLineForm[]>([{ sku: "", quantity: 1 }]);
@@ -106,11 +108,31 @@ function CreateOrderModal({
               />
             </div>
             <div>
+              <label className="block text-xs font-medium text-[var(--color-text-muted)] mb-1">Company Name</label>
+              <input
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                placeholder="e.g. V22 Dispensary"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--color-border)]"
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
               <label className="block text-xs font-medium text-[var(--color-text-muted)] mb-1">Customer Name</label>
               <input
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
                 placeholder="e.g. John Doe"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--color-border)]"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-[var(--color-text-muted)] mb-1">Phone</label>
+              <input
+                value={customerPhone}
+                onChange={(e) => setCustomerPhone(e.target.value)}
+                placeholder="e.g. 0481 735 488"
                 className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--color-border)]"
               />
             </div>
@@ -195,7 +217,9 @@ function CreateOrderModal({
             onClick={() =>
               onSave({
                 order_number: orderNumber,
+                company_name: companyName,
                 customer_name: customerName,
+                customer_phone: customerPhone,
                 customer_email: customerEmail,
                 shipping_address: shippingAddress,
                 items: validItems,
@@ -244,7 +268,7 @@ export default function OrdersPage() {
   });
 
   const createMutation = useMutation({
-    mutationFn: (data: { order_number: string; customer_name?: string; items: { sku: string; quantity: number }[] }) =>
+    mutationFn: (data: { order_number: string; company_name?: string; customer_name?: string; customer_phone?: string; items: { sku: string; quantity: number }[] }) =>
       ordersApi.create(data),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ["orders"] });

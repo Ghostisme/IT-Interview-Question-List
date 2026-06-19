@@ -648,3 +648,864 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-06-19 16:13:18 | INFO     | router.products           | list_products page=1 total=11
 2026-06-19 16:13:26 | INFO     | router.orders             | list_orders page=1 total=4
 2026-06-19 16:13:54 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:16:40 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:16:44 | INFO     | router.products           | list_products page=1 total=11
+2026-06-19 16:16:45 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:16:47 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:16:57 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2000', 'to_postcode': '3000', 'weight': 1.0, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 16:16:57 | INFO     | auspost_service           | Requesting shipping quote: 2000 -> 3000, 1.00kg
+2026-06-19 16:16:59 | INFO     | auspost_service           | Got 5 shipping quotes
+2026-06-19 16:17:27 | INFO     | router.products           | list_products page=1 total=11
+2026-06-19 16:17:28 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:17:32 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:17:37 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:18:22 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:19:09 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:23:28 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:24:22 | INFO     | router.orders             | list_orders page=1 total=3
+2026-06-19 16:24:23 | INFO     | router.orders             | list_orders page=1 total=4
+2026-06-19 16:35:23 | INFO     | main                      | Shutting down application
+2026-06-19 16:35:24 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:35:24 | INFO     | database                  | Database tables created
+2026-06-19 16:35:55 | INFO     | main                      | Shutting down application
+2026-06-19 16:35:55 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:35:55 | INFO     | database                  | Database tables created
+2026-06-19 16:36:18 | INFO     | main                      | Shutting down application
+2026-06-19 16:36:19 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:36:19 | INFO     | database                  | Database tables created
+2026-06-19 16:36:43 | INFO     | main                      | Shutting down application
+2026-06-19 16:36:44 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:36:44 | INFO     | database                  | Database tables created
+2026-06-19 16:37:47 | INFO     | main                      | Shutting down application
+2026-06-19 16:37:48 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:37:48 | INFO     | database                  | Database tables created
+2026-06-19 16:38:21 | INFO     | main                      | Shutting down application
+2026-06-19 16:38:22 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:38:22 | INFO     | database                  | Database tables created
+2026-06-19 16:38:40 | ERROR    | main                      | Unhandled error on GET http://127.0.0.1:8000/api/orders/4: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: orders.company_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 2592, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\orders.py", line 89, in get_order
+    .first()
+     ^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-19 16:39:38 | ERROR    | main                      | Unhandled error on GET http://127.0.0.1:8000/api/orders/4: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: orders.company_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 2592, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\orders.py", line 89, in get_order
+    .first()
+     ^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-19 16:39:47 | ERROR    | main                      | Unhandled error on GET http://127.0.0.1:8000/api/orders/4: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: orders.company_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 2592, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\orders.py", line 89, in get_order
+    .first()
+     ^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-19 16:39:53 | INFO     | main                      | Shutting down application
+2026-06-19 16:39:54 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:39:54 | INFO     | database                  | Database tables created
+2026-06-19 16:40:13 | INFO     | main                      | Shutting down application
+2026-06-19 16:40:14 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:40:14 | INFO     | database                  | Database tables created
+2026-06-19 16:40:48 | ERROR    | main                      | Unhandled error on GET http://127.0.0.1:8000/api/orders/4: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: orders.company_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 2592, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\orders.py", line 89, in get_order
+    .first()
+     ^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-19 16:40:49 | ERROR    | main                      | Unhandled error on GET http://127.0.0.1:8000/api/orders/4: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: orders.company_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 2592, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\orders.py", line 89, in get_order
+    .first()
+     ^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-19 16:41:53 | ERROR    | main                      | Unhandled error on GET http://127.0.0.1:8000/api/orders/4: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: orders.company_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1650, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 2102, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1670, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 1218, in handle
+    await app(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\fastapi\routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 2592, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\yongji\IT-Interview-Question-List\backend\routers\orders.py", line 89, in get_order
+    .first()
+     ^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: orders.company_name
+[SQL: SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_order_number AS anon_1_orders_order_number, anon_1.orders_company_name AS anon_1_orders_company_name, anon_1.orders_customer_name AS anon_1_orders_customer_name, anon_1.orders_customer_phone AS anon_1_orders_customer_phone, anon_1.orders_customer_email AS anon_1_orders_customer_email, anon_1.orders_shipping_address AS anon_1_orders_shipping_address, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_subtotal AS anon_1_orders_subtotal, anon_1.orders_gst AS anon_1_orders_gst, anon_1.orders_shipping_fee AS anon_1_orders_shipping_fee, anon_1.orders_total AS anon_1_orders_total, anon_1.orders_notes AS anon_1_orders_notes, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.sku AS order_items_1_sku, order_items_1.product_name AS order_items_1_product_name, order_items_1.quantity AS order_items_1_quantity, order_items_1.unit_price AS order_items_1_unit_price, order_items_1.line_total AS order_items_1_line_total, order_items_1.assigned_tracking AS order_items_1_assigned_tracking, order_items_1.image_url AS order_items_1_image_url, tracking_1.id AS tracking_1_id, tracking_1.order_id AS tracking_1_order_id, tracking_1.carrier AS tracking_1_carrier, tracking_1.tracking_number AS tracking_1_tracking_number, tracking_1.tracking_label AS tracking_1_tracking_label, tracking_1.status AS tracking_1_status, tracking_1.status_detail AS tracking_1_status_detail, tracking_1.current_location AS tracking_1_current_location, tracking_1.estimated_delivery AS tracking_1_estimated_delivery, tracking_1.last_updated AS tracking_1_last_updated 
+FROM (SELECT orders.id AS orders_id, orders.order_number AS orders_order_number, orders.company_name AS orders_company_name, orders.customer_name AS orders_customer_name, orders.customer_phone AS orders_customer_phone, orders.customer_email AS orders_customer_email, orders.shipping_address AS orders_shipping_address, orders.status AS orders_status, orders.subtotal AS orders_subtotal, orders.gst AS orders_gst, orders.shipping_fee AS orders_shipping_fee, orders.total AS orders_total, orders.notes AS orders_notes, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN tracking AS tracking_1 ON anon_1.orders_id = tracking_1.order_id]
+[parameters: (4, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-19 16:42:11 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:11 | INFO     | database                  | Database tables created
+2026-06-19 16:42:11 | DEBUG    | price_service             | subtotal=400.00 gst=40.00 shipping=0.00 total=440.00
+2026-06-19 16:42:12 | INFO     | router.orders             | Created order: PO-TEST-001 with 2 items
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=100.00 gst=10.00 shipping=0.00 total=110.00
+2026-06-19 16:42:12 | INFO     | router.orders             | Created order: PO-DUP-001 with 1 items
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=100.00 gst=10.00 shipping=0.00 total=110.00
+2026-06-19 16:42:12 | INFO     | router.orders             | Created order: PO-GET-001 with 1 items
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=100.00 gst=10.00 shipping=0.00 total=110.00
+2026-06-19 16:42:12 | INFO     | router.orders             | Created order: PO-LIST-001 with 1 items
+2026-06-19 16:42:12 | INFO     | router.orders             | list_orders page=1 total=1
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=100.00 gst=10.00 shipping=0.00 total=110.00
+2026-06-19 16:42:12 | INFO     | router.orders             | Created order: PO-STATUS-001 with 1 items
+2026-06-19 16:42:12 | INFO     | router.orders             | Order PO-STATUS-001 status -> shipped
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=100.00 gst=10.00 shipping=0.00 total=110.00
+2026-06-19 16:42:12 | INFO     | router.orders             | Created order: PO-DEL-001 with 1 items
+2026-06-19 16:42:12 | INFO     | router.orders             | Deleted order id=1
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=300.00 gst=30.00 shipping=0.00 total=330.00
+2026-06-19 16:42:12 | INFO     | router.orders             | Created order: PO-REPORT-001 with 1 items
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=100.00 gst=10.00 shipping=0.00 total=110.00
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=845.00 gst=84.50 shipping=0.00 total=929.50
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=100.00 gst=10.00 shipping=15.50 total=125.50
+2026-06-19 16:42:12 | DEBUG    | price_service             | subtotal=0.00 gst=0.00 shipping=0.00 total=0.00
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | router.products           | Created product: NEW001
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | router.products           | Created product: DUP01
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:12 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:12 | INFO     | database                  | Database tables created
+2026-06-19 16:42:12 | INFO     | router.products           | list_products page=1 total=1
+2026-06-19 16:42:12 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:13 | INFO     | database                  | Database tables created
+2026-06-19 16:42:13 | INFO     | router.products           | Updated product: TEST001 fields=['name', 'rrp']
+2026-06-19 16:42:13 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:13 | INFO     | database                  | Database tables created
+2026-06-19 16:42:13 | INFO     | router.products           | Deleted product: TEST001
+2026-06-19 16:42:13 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:13 | INFO     | database                  | Database tables created
+2026-06-19 16:42:13 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:13 | INFO     | database                  | Database tables created
+2026-06-19 16:42:13 | INFO     | router.tracking           | Added tracking TRACK123 for order 1
+2026-06-19 16:42:13 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:13 | INFO     | database                  | Database tables created
+2026-06-19 16:42:13 | INFO     | router.tracking           | Added tracking LIST_T1 for order 1
+2026-06-19 16:42:13 | INFO     | router.tracking           | Added tracking LIST_T2 for order 1
+2026-06-19 16:42:13 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:13 | INFO     | main                      | Starting application — initialising database
+2026-06-19 16:42:13 | INFO     | database                  | Database tables created
+2026-06-19 16:42:13 | INFO     | main                      | Shutting down application
+2026-06-19 16:42:22 | INFO     | seed                      | === Starting database seed ===
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: TBAMET10
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: TBAMET28
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: TBOPAL28
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: HARNIG
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: LELCBD100
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: AURPUR10
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: HALGEO15
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: MCMW10
+2026-06-19 16:42:22 | INFO     | seed                      | Added product: MCBO30
+2026-06-19 16:42:22 | DEBUG    | price_service             | subtotal=1959.00 gst=195.90 shipping=0.00 total=2154.90
+2026-06-19 16:42:22 | INFO     | seed                      | Created order: PO-20251130-00072 (5 items)
+2026-06-19 16:42:22 | DEBUG    | price_service             | subtotal=2443.00 gst=244.30 shipping=0.00 total=2687.30
+2026-06-19 16:42:22 | INFO     | seed                      | Created order: PO-20251202-00046 (4 items)
+2026-06-19 16:42:22 | INFO     | seed                      | === Seed complete ===
+2026-06-19 16:42:36 | INFO     | router.products           | list_products page=1 total=9
+2026-06-19 16:42:37 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 16:42:41 | INFO     | router.tracking           | Shipping quote request: {'from_postcode': '2111', 'to_postcode': '3141', 'weight': 1.0, 'length': 20.0, 'width': 15.0, 'height': 10.0}
+2026-06-19 16:42:41 | INFO     | auspost_service           | Requesting shipping quote: 2111 -> 3141, 1.00kg
+2026-06-19 16:42:44 | INFO     | auspost_service           | Got 5 shipping quotes
+2026-06-19 16:42:45 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 16:43:04 | INFO     | router.orders             | list_orders page=1 total=2
+2026-06-19 16:43:10 | INFO     | seed                      | === Starting database seed ===
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: TBAMET10
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: TBAMET28
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: TBOPAL28
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: HARNIG
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: LELCBD100
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: AURPUR10
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: HALGEO15
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: MCMW10
+2026-06-19 16:43:10 | INFO     | seed                      | Added product: MCBO30
+2026-06-19 16:43:10 | DEBUG    | price_service             | subtotal=1959.00 gst=195.90 shipping=0.00 total=2154.90
+2026-06-19 16:43:10 | INFO     | seed                      | Created order: PO-20251130-00072 (5 items)
+2026-06-19 16:43:10 | DEBUG    | price_service             | subtotal=2443.00 gst=244.30 shipping=0.00 total=2687.30
+2026-06-19 16:43:10 | INFO     | seed                      | Created order: PO-20251202-00046 (4 items)
+2026-06-19 16:43:10 | INFO     | seed                      | === Seed complete ===
+2026-06-19 16:43:25 | INFO     | router.orders             | list_orders page=1 total=2

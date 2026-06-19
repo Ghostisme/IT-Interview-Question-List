@@ -4,17 +4,18 @@ routers/orders.py — Order CRUD API endpoints.
 Endpoints:
   GET    /api/orders              List order summaries (paginated, filterable by status)
   GET    /api/orders/{id}         Full order detail with line items and tracking records
+  GET    /api/orders/{id}/report  Consolidated JSON report (order header + SKU lines + tracking + totals)
   POST   /api/orders              Create order — auto-resolves SKU prices from the products table,
                                    calculates line totals, subtotal, GST, and total
   PATCH  /api/orders/{id}/status  Update order status (e.g. pending → in_transit → completed)
   DELETE /api/orders/{id}         Delete order and cascade-delete its items + tracking
 
-Price calculation flow (create_order):
+Price calculation flow (per assessment specification):
   1. For each SKU in the request, look up the product's RRP (unit price, GST-inclusive)
   2. line_total = unit_price × quantity  (Decimal precision)
   3. subtotal   = sum of all line_totals
-  4. gst        = subtotal × 10 / 110    (back-calculate the GST component)
-  5. total      = subtotal               (shipping added separately when available)
+  4. gst        = subtotal × 10%
+  5. total      = subtotal + gst + shipping_fee
 """
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -61,6 +62,7 @@ def list_orders(
                 id=o.id,
                 order_number=o.order_number,
                 customer_name=o.customer_name,
+                company_name=o.company_name or "",
                 status=o.status,
                 total=o.total,
                 item_count=len(o.items),
@@ -95,12 +97,11 @@ def get_order(order_id: int, db: Session = Depends(get_db)):
 def get_order_report(order_id: int, db: Session = Depends(get_db)):
     """
     Consolidated order report — single JSON that satisfies all output requirements:
-      - Order header (number, status, customer, address)
-      - SKU lines (unit price, quantities, matched product details)
+      - Order header (number, status, company, customer, phone, address)
+      - SKU lines (unit price, quantities, matched product details, image)
       - Tracking information (carrier, tracking number, status, events)
       - Financial summary (Subtotal, GST, Shipment Fee, Total)
     """
-    from models.db_models import Tracking
     order = (
         db.query(Order)
         .options(joinedload(Order.items), joinedload(Order.tracking_records))
@@ -113,8 +114,11 @@ def get_order_report(order_id: int, db: Session = Depends(get_db)):
     return {
         "order_header": {
             "order_number": order.order_number,
+            "order_date": order.created_at.strftime("%d/%m/%y") if order.created_at else None,
             "status": order.status,
+            "company_name": order.company_name,
             "customer_name": order.customer_name,
+            "customer_phone": order.customer_phone,
             "customer_email": order.customer_email,
             "shipping_address": order.shipping_address,
             "created_at": order.created_at.isoformat() if order.created_at else None,
@@ -126,11 +130,14 @@ def get_order_report(order_id: int, db: Session = Depends(get_db)):
                 "quantity": item.quantity,
                 "unit_price": item.unit_price,
                 "line_total": item.line_total,
+                "assigned_tracking": item.assigned_tracking,
+                "image_url": item.image_url,
             }
             for item in order.items
         ],
         "tracking": [
             {
+                "tracking_label": t.tracking_label,
                 "carrier": t.carrier,
                 "tracking_number": t.tracking_number,
                 "status": t.status,
@@ -167,7 +174,6 @@ def create_order(body: OrderCreate, db: Session = Depends(get_db)):
     if db.query(Order).filter(Order.order_number == body.order_number).first():
         raise HTTPException(409, f"Order {body.order_number} already exists")
 
-    # Resolve each SKU → product and compute line totals
     line_items = []
     for item_req in body.items:
         product = db.query(Product).filter(Product.sku == item_req.sku).first()
@@ -181,24 +187,27 @@ def create_order(body: OrderCreate, db: Session = Depends(get_db)):
                 "quantity": item_req.quantity,
                 "unit_price": product.rrp,
                 "line_total": lt,
+                "image_url": product.image_url or "",
             }
         )
 
-    # Aggregate subtotal, back-calculate GST, compute total
     totals = calculate_order_totals(line_items)
 
     order = Order(
         order_number=body.order_number,
+        company_name=body.company_name,
         customer_name=body.customer_name,
+        customer_phone=body.customer_phone,
         customer_email=body.customer_email,
         shipping_address=body.shipping_address,
         notes=body.notes,
         subtotal=totals["subtotal"],
         gst=totals["gst"],
+        shipping_fee=totals["shipping_fee"],
         total=totals["total"],
     )
     db.add(order)
-    db.flush()  # get order.id before inserting items
+    db.flush()
 
     for li in line_items:
         db.add(OrderItem(order_id=order.id, **li))
@@ -207,7 +216,6 @@ def create_order(body: OrderCreate, db: Session = Depends(get_db)):
     db.refresh(order)
     log.info("Created order: %s with %d items", order.order_number, len(line_items))
 
-    # Re-query with eager loads so the response includes items + tracking
     return (
         db.query(Order)
         .options(joinedload(Order.items), joinedload(Order.tracking_records))

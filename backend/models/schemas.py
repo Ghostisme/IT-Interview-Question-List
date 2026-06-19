@@ -8,7 +8,18 @@ class ProductBase(BaseModel):
     description: str = ""
     rrp: float = Field(..., description="Unit price USD, GST inclusive")
     weight: float = 0.0
+    volumetric_gross_weight: float = 0.0
+    length: float = 0.0
+    width: float = 0.0
+    height: float = 0.0
+    volume: float = 0.0
     category: str = ""
+    barcode: str = ""
+    dosage_type: str = ""
+    product_type: str = ""
+    size: str = ""
+    schedule: str = ""
+    image_url: str = ""
     stock_quantity: int = 0
 
 
@@ -21,7 +32,18 @@ class ProductUpdate(BaseModel):
     description: str | None = None
     rrp: float | None = None
     weight: float | None = None
+    volumetric_gross_weight: float | None = None
+    length: float | None = None
+    width: float | None = None
+    height: float | None = None
+    volume: float | None = None
     category: str | None = None
+    barcode: str | None = None
+    dosage_type: str | None = None
+    product_type: str | None = None
+    size: str | None = None
+    schedule: str | None = None
+    image_url: str | None = None
     stock_quantity: int | None = None
 
 
@@ -39,6 +61,8 @@ class OrderItemBase(BaseModel):
     quantity: int = 1
     unit_price: float
     line_total: float
+    assigned_tracking: str = ""
+    image_url: str = ""
 
 
 class OrderItemCreate(BaseModel):
@@ -65,6 +89,7 @@ class TrackingEventOut(BaseModel):
 class TrackingBase(BaseModel):
     carrier: str
     tracking_number: str
+    tracking_label: str = ""
     status: str = "pending"
     status_detail: str = ""
     current_location: str = ""
@@ -86,7 +111,9 @@ class TrackingOut(TrackingBase):
 
 class OrderBase(BaseModel):
     order_number: str
+    company_name: str = ""
     customer_name: str = ""
+    customer_phone: str = ""
     customer_email: str = ""
     shipping_address: str = ""
     notes: str = ""
@@ -115,6 +142,7 @@ class OrderSummary(BaseModel):
     id: int
     order_number: str
     customer_name: str
+    company_name: str = ""
     status: str
     total: float
     item_count: int

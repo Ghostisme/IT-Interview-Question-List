@@ -15,9 +15,11 @@ def test_create_order(client, db):
     _seed_products(db)
     order_data = {
         "order_number": "PO-TEST-001",
+        "company_name": "Test Company",
         "customer_name": "Test User",
+        "customer_phone": "0400 000 000",
         "customer_email": "test@example.com",
-        "shipping_address": "123 Test St",
+        "shipping_address": "123 Test St, VIC 3000",
         "items": [
             {"sku": "SKU_A", "quantity": 2},
             {"sku": "SKU_B", "quantity": 1},
@@ -27,9 +29,12 @@ def test_create_order(client, db):
     assert resp.status_code == 201
     body = resp.json()
     assert body["order_number"] == "PO-TEST-001"
+    assert body["company_name"] == "Test Company"
+    assert body["customer_phone"] == "0400 000 000"
     assert len(body["items"]) == 2
     assert body["subtotal"] == 400.0  # 100*2 + 200*1
-    assert body["gst"] > 0
+    assert body["gst"] == 40.0  # 400 * 10%
+    assert body["total"] == 440.0  # 400 + 40 + 0
 
 
 def test_create_order_unknown_sku(client, db):
@@ -104,3 +109,27 @@ def test_delete_order(client, db):
     assert resp.status_code == 204
     resp = client.get(f"/api/orders/{order_id}")
     assert resp.status_code == 404
+
+
+def test_order_report(client, db):
+    _seed_products(db)
+    resp = client.post(
+        "/api/orders",
+        json={
+            "order_number": "PO-REPORT-001",
+            "company_name": "Report Corp",
+            "customer_name": "Reporter",
+            "customer_phone": "0411 111 111",
+            "items": [{"sku": "SKU_A", "quantity": 3}],
+        },
+    )
+    order_id = resp.json()["id"]
+    resp = client.get(f"/api/orders/{order_id}/report")
+    assert resp.status_code == 200
+    report = resp.json()
+    assert report["order_header"]["company_name"] == "Report Corp"
+    assert report["order_header"]["customer_phone"] == "0411 111 111"
+    assert len(report["line_items"]) == 1
+    assert report["summary"]["subtotal"] == 300.0
+    assert report["summary"]["gst"] == 30.0
+    assert report["summary"]["total"] == 330.0

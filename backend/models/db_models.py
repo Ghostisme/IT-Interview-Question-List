@@ -3,9 +3,9 @@ models/db_models.py — SQLAlchemy ORM model definitions.
 
 Database schema overview (5 tables):
 
-  products        SKU product catalog (sku, name, rrp, weight, category)
+  products        SKU product catalog (sku, name, rrp, weight, dimensions, category)
        │
-  orders          Purchase orders (order_number, customer, status, totals)
+  orders          Purchase orders (order_number, company, customer, status, totals)
        │
        ├── order_items    Line items linking orders ↔ products (qty, unit_price, line_total)
        │
@@ -18,6 +18,7 @@ Key design decisions:
   - CASCADE deletes: deleting an order removes its items and tracking
   - Composite indexes for common query patterns (status+date, order_id+sku)
   - RRP stored as Float with GST-inclusive USD pricing
+  - Product dimensions stored as raw floats (parsed from unit-suffixed strings at import)
 """
 
 from datetime import datetime
@@ -39,8 +40,19 @@ class Product(Base):
     name = Column(String(255), nullable=False)
     description = Column(Text, default="")
     rrp = Column(Float, nullable=False, comment="Unit price in USD, GST inclusive")
-    weight = Column(Float, default=0.0, comment="Weight in kg")
+    weight = Column(Float, default=0.0, comment="Weight in grams (raw value from source)")
+    volumetric_gross_weight = Column(Float, default=0.0, comment="Shipping weight in kg")
+    length = Column(Float, default=0.0, comment="Length in mm")
+    width = Column(Float, default=0.0, comment="Width in mm")
+    height = Column(Float, default=0.0, comment="Height in mm")
+    volume = Column(Float, default=0.0, comment="Volume in mm³")
     category = Column(String(100), default="")
+    barcode = Column(String(100), default="")
+    dosage_type = Column(String(100), default="")
+    product_type = Column(String(100), default="")
+    size = Column(String(50), default="")
+    schedule = Column(String(20), default="")
+    image_url = Column(String(500), default="", comment="Product image URL or placeholder")
     stock_quantity = Column(Integer, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -64,7 +76,9 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     order_number = Column(String(50), unique=True, nullable=False, index=True)
+    company_name = Column(String(255), default="")
     customer_name = Column(String(255), default="")
+    customer_phone = Column(String(50), default="")
     customer_email = Column(String(255), default="")
     shipping_address = Column(Text, default="")
     status = Column(String(50), default="pending", index=True)
@@ -102,6 +116,8 @@ class OrderItem(Base):
     quantity = Column(Integer, nullable=False, default=1)
     unit_price = Column(Float, nullable=False, comment="USD, GST inclusive")
     line_total = Column(Float, nullable=False, comment="quantity * unit_price")
+    assigned_tracking = Column(String(50), default="", comment="Track label e.g. Track 1")
+    image_url = Column(String(500), default="", comment="Product image snapshot")
 
     order = relationship("Order", back_populates="items")
 
@@ -124,6 +140,7 @@ class Tracking(Base):
     order_id = Column(Integer, ForeignKey("orders.id", ondelete="CASCADE"), nullable=False)
     carrier = Column(String(50), nullable=False, comment="StarTrack / TNT / AusPost")
     tracking_number = Column(String(100), nullable=False, index=True)
+    tracking_label = Column(String(50), default="", comment="e.g. Track 1, Track 2")
     status = Column(String(100), default="pending")
     status_detail = Column(Text, default="")
     current_location = Column(String(255), default="")
@@ -145,7 +162,6 @@ class TrackingEvent(Base):
     """
     Individual event in a shipment's logistics timeline.
     Displayed chronologically on the Logistics page as a vertical timeline.
-    Example statuses: Order Placed → Picked Up → In Transit → Delivered
     """
     __tablename__ = "tracking_events"
 

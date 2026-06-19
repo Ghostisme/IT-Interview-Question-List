@@ -4,12 +4,12 @@ services/price_service.py — Price calculation engine.
 All monetary arithmetic uses Python's Decimal type to avoid
 floating-point rounding errors (e.g. 33.33 × 3 = 99.99 exactly).
 
-Key business rules:
+Key business rules (per assessment specification):
   - RRP is the Recommended Retail Price in USD, already GST-inclusive.
   - line_total = unit_price × quantity
-  - subtotal   = sum of all line_totals (still GST-inclusive)
-  - gst        = subtotal × 10 / 110   (back-calculate GST component from inclusive price)
-  - total      = subtotal               (shipping fee is added separately)
+  - subtotal   = sum of all line_totals
+  - gst        = subtotal × 10%  (as specified by assessment: "GST = 10% of Subtotal")
+  - total      = subtotal + gst + shipping_fee
 """
 
 from decimal import Decimal, ROUND_HALF_UP
@@ -33,20 +33,21 @@ def calculate_line_total(unit_price: float, quantity: int) -> float:
 
 def calculate_order_totals(
     items: list[dict],
+    shipping_fee: float = 0.0,
 ) -> dict:
     """
     Aggregate all line items into order-level financial totals.
 
+    Per assessment specification:
+      GST   = Subtotal × 10%
+      Total = Subtotal + GST + Shipment Fee
+
     Args:
         items: list of {"unit_price": float, "quantity": int}
+        shipping_fee: shipping cost (default 0.0)
 
     Returns:
-        {"subtotal": float, "gst": float, "total": float}
-
-    Example:
-        items = [{"unit_price": 175.0, "quantity": 3},
-                 {"unit_price": 89.0,  "quantity": 6}]
-        → subtotal = 1059.0,  gst = 96.27,  total = 1059.0
+        {"subtotal": float, "gst": float, "shipping_fee": float, "total": float}
     """
     subtotal = Decimal("0")
     for item in items:
@@ -54,14 +55,14 @@ def calculate_order_totals(
         subtotal += line
 
     subtotal = subtotal.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-    # GST back-calculation: price_incl_gst × rate / (1 + rate)
-    gst = (subtotal * GST_RATE / (1 + GST_RATE)).quantize(
-        Decimal("0.01"), rounding=ROUND_HALF_UP
-    )
+    gst = (subtotal * GST_RATE).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    ship = Decimal(str(shipping_fee)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    total = (subtotal + gst + ship).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 
-    log.debug("subtotal=%s gst=%s", subtotal, gst)
+    log.debug("subtotal=%s gst=%s shipping=%s total=%s", subtotal, gst, ship, total)
     return {
         "subtotal": float(subtotal),
         "gst": float(gst),
-        "total": float(subtotal),
+        "shipping_fee": float(ship),
+        "total": float(total),
     }

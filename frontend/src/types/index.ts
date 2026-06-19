@@ -5,7 +5,18 @@ export interface Product {
   description: string;
   rrp: number;
   weight: number;
+  volumetric_gross_weight: number;
+  length: number;
+  width: number;
+  height: number;
+  volume: number;
   category: string;
+  barcode: string;
+  dosage_type: string;
+  product_type: string;
+  size: string;
+  schedule: string;
+  image_url: string;
   stock_quantity: number;
   created_at: string;
   updated_at: string;
@@ -18,6 +29,8 @@ export interface OrderItem {
   quantity: number;
   unit_price: number;
   line_total: number;
+  assigned_tracking: string;
+  image_url: string;
 }
 
 export interface TrackingEvent {
@@ -33,6 +46,7 @@ export interface TrackingRecord {
   order_id: number;
   carrier: string;
   tracking_number: string;
+  tracking_label: string;
   status: string;
   status_detail: string;
   current_location: string;
@@ -44,7 +58,9 @@ export interface TrackingRecord {
 export interface Order {
   id: number;
   order_number: string;
+  company_name: string;
   customer_name: string;
+  customer_phone: string;
   customer_email: string;
   shipping_address: string;
   status: string;
@@ -63,6 +79,7 @@ export interface OrderSummary {
   id: number;
   order_number: string;
   customer_name: string;
+  company_name: string;
   status: string;
   total: number;
   item_count: number;

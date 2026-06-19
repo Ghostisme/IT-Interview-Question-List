@@ -57,7 +57,7 @@ export const ordersApi = {
   list: (params?: { page?: number; page_size?: number; status?: string; search?: string }) =>
     api.get<PaginatedResponse<OrderSummary>>("/orders", { params }).then((r) => r.data),
   get: (id: number) => api.get<Order>(`/orders/${id}`).then((r) => r.data),
-  create: (data: { order_number: string; customer_name?: string; items: { sku: string; quantity: number }[] }) =>
+  create: (data: { order_number: string; company_name?: string; customer_name?: string; customer_phone?: string; customer_email?: string; shipping_address?: string; items: { sku: string; quantity: number }[] }) =>
     api.post<Order>("/orders", data).then((r) => r.data),
   updateStatus: (id: number, status: string) =>
     api.patch(`/orders/${id}/status`, null, { params: { status } }).then((r) => r.data),
